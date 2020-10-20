@@ -58,6 +58,10 @@ ifeq ($(NAN_VENDOR_AIDL),y)
 LOCAL_CFLAGS += -DCONFIG_NAN_VENDOR_AIDL
 endif
 
+ifeq ($(TARGET_HAS_BROKEN_WLAN_SET_INTERFACE),true)
+LOCAL_CFLAGS += -DBROKEN_SET_INTERFACE
+endif
+
 # gscan.cpp: address of array 'cached_results[i].results' will always evaluate to 'true'
 LOCAL_CLANG_CFLAGS := -Wno-pointer-bool-conversion
 
@@ -189,6 +193,10 @@ endif
 
 ifeq ($(NAN_VENDOR_AIDL),y)
 LOCAL_CFLAGS += -DCONFIG_NAN_VENDOR_AIDL
+endif
+
+ifeq ($(TARGET_HAS_BROKEN_WLAN_SET_INTERFACE),true)
+LOCAL_CFLAGS += -DBROKEN_SET_INTERFACE
 endif
 
 ifeq ($(NAN_PAIRING),y)
